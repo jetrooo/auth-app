@@ -7,6 +7,7 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel,
 import { auth } from '@/auth'
 import { User } from 'next-auth';
 import signout from '../(auth)/_actions/signout';
+import { redirect } from 'next/navigation'
 
 export default async function DashboardPage() {  
 
@@ -15,6 +16,9 @@ export default async function DashboardPage() {
   
   if (session) {
     user = session.user;
+  }
+  else {
+    redirect(`/signin`)
   }
 
   return (
